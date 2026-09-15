@@ -1,0 +1,15 @@
+.DS_Store
+*.log
+.vscode/
+.idea/
+designs/
+tmp/
+*.tmp
+
+# Local screenshots / unused
+assets/*-*-*-*-*-*.jpg
+assets/about-band-local-duo.png
+assets/logo-masil.jpg
+assets/guard-*.jpg
+assets/guards-*.jpg
+assets/uniform-reference.jpg
