@@ -30,16 +30,15 @@
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
   if (toggle && nav) {
-    const close = () => {
-      toggle.setAttribute("aria-expanded", "false");
-      nav.classList.remove("is-open");
-      document.body.style.overflow = "";
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("is-open", open);
+      header?.classList.toggle("is-menu-open", open);
+      document.body.style.overflow = open ? "hidden" : "";
     };
+    const close = () => setOpen(false);
     toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!open));
-      nav.classList.toggle("is-open", !open);
-      document.body.style.overflow = open ? "" : "hidden";
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
     });
     nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
     window.addEventListener("keydown", (e) => e.key === "Escape" && close());
